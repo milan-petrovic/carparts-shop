@@ -1,0 +1,39 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%" *ngIf="orders.length > 0 && !isLoading">
+  <thead>
+    <tr>
+      <th class="th-sm">ID
+        <i class="fa fa-sort float-right" aria-hidden="true"></i>
+      </th>
+      <th class="th-sm">PROIZVOD
+        <i class="fa fa-sort float-right" aria-hidden="true"></i>
+      </th>
+      <th class="th-sm">KUPAC
+        <i class="fa fa-sort float-right" aria-hidden="true"></i>
+      </th>
+      <th class="th-sm"></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let order of orders">
+    <tr>
+      <td>
+        {{ order._id }}
+      </td>
+      <td>
+        {{ order.product.name}}
+      </td>
+      <td>
+        {{ order.creator}}
+      </td>
+      <td>
+        <button mat-button color="primary" (click)="onAccept(order._id, order.creator,order.product)">
+          <mat-icon>done</mat-icon>PRIHVATI
+        </button>
+        <button mat-button color="warn" (click)="onDecline(order._id)">
+          <mat-icon>clear</mat-icon>ODBIJ
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="info-text" *ngIf="orders.length <= 0 && !isLoading">Trenutno nema porudzbina u bazi!</p>

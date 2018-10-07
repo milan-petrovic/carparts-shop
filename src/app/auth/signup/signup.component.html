@@ -1,0 +1,17 @@
+
+<mat-card>
+  <mat-card-title>SIGNUP</mat-card-title>
+  <form (submit)="onSignUp(signUpForm)" #signUpForm="ngForm">
+  <mat-form-field>
+    <input matInput name="email" type="email" ngModel placeholder="E-Mail" #emailInput="ngModel" email required>
+    <mat-error *ngIf="emailInput.invalid">Unesite tacnu email adresu.</mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput name="password" type="Password" ngModel placeholder="Password" required #passwordInput="ngModel" required>
+    <mat-error *ngIf="passwordInput.invalid">Unesite tacnu lozinku.</mat-error>
+  </mat-form-field>
+  <br>
+  <button mat-raised-button type="submit" color="accent" *ngIf="!isLoading">Sign up</button>
+  </form>
+</mat-card>

@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading == true"></mat-spinner>
+  <form [formGroup]="form" (submit)="onSaveProduct()" *ngIf="isLoading == false">
+    <mat-form-field>
+      <input matInput type="text" required name="name" formControlName="name" placeholder="Naziv proizvoda" />
+      <mat-error *ngIf="form.get('name').invalid">Unesite naziv proizvoda.</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <input matInput type="text" required name="price" formControlName="price" placeholder="Cijena proizvoda" />
+      <mat-error *ngIf="form.get('price').invalid">Unesite cijenu proizvoda.</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput type="text" required name="quantity" formControlName="quantity" placeholder="Kolicina proizvoda" />
+      <mat-error *ngIf="form.get('quantity').invalid">Unesite kolicinu proivoda.</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="accent" type="submit">
+      <mat-icon>save</mat-icon> SACUVAJ
+    </button>
+  </form>
+</mat-card>

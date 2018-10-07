@@ -1,0 +1,31 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<table class="table table-striped table-bordered" cellspacing="0" width="100%" *ngIf="users.length > 0 && !isLoading" >
+  <thead>
+    <tr>
+        <th class="th-sm">ID
+            <i class="fa fa-sort float-right" aria-hidden="true"></i>
+        </th>
+        <th class="th-sm">EMAIL
+            <i class="fa fa-sort float-right" aria-hidden="true"></i>
+        </th>
+      <th class="th-sm"></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let user of users">
+    <tr *ngIf="user.email !== 'admin@carparts.com'">
+    <td>
+      {{ user._id }}
+    </td>
+    <td>
+      {{ user.email }}
+    </td>
+    <td>
+        <button mat-button color="warn" (click)="onDelete(user._id)">
+            <mat-icon>delete</mat-icon>OBRISI
+          </button>
+    </td>
+    </tr>
+  </tbody>
+</table>
+<p *ngIf="users.length <=0 && !isLoading">Trenutno nema kupaca u bazi!</p>
+

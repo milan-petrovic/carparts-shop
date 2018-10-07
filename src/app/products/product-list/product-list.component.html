@@ -1,0 +1,26 @@
+  <mat-spinner *ngIf="isLoading == true"></mat-spinner>
+  <mat-accordion multi="true"  *ngIf="products.length > 0 && isLoading == false">
+    <mat-expansion-panel *ngFor="let product of products">
+      <mat-expansion-panel-header>
+        <strong>
+            {{ product.name }}
+        </strong>
+      </mat-expansion-panel-header>
+      <p><strong>Cijena:</strong> {{ product.price }} BAM</p>
+      <p><strong>Kolicina:</strong> {{ product.quantity }}</p>
+      <mat-action-row *ngIf="isAuthenticated">
+          <button  *ngIf="isAuthenticated && authUserEmail == 'admin@carparts.com'" mat-button color="primary" [routerLink]="['/edit', product.id]" routerLinkActive="router-link-active" ><mat-icon>edit</mat-icon>UREDI</button>
+          <button  *ngIf="isAuthenticated && authUserEmail == 'admin@carparts.com'" mat-button color="warn" (click)="onDelete(product.id)"><mat-icon>delete</mat-icon>OBRISI</button>
+          <button  *ngIf="isAuthenticated && authUserEmail !== 'admin@carparts.com'" mat-button color="link" (click)="onMakeOrder(product)"><mat-icon>add_shopping_cart</mat-icon>KUPI</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+    <mat-paginator [length]="totalLength" [pageSize]="productsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)"></mat-paginator>
+  </mat-accordion>
+  <p class="info-text" *ngIf="products.length <= 0 && isLoading == false">Trenutno nema dostupnih proizvoda!</p>
+
+
+
+
+
+
+

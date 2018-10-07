@@ -1,0 +1,9 @@
+
+.show-footer {
+  visibility: visible;
+  position: fixed;
+  bottom: 0;
+}
+.footer {
+  visibility: hidden;
+}

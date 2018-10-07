@@ -1,0 +1,12 @@
+.info-text {
+  text-align: center;
+}
+mat-expansion-panel {
+  margin-top: 1rem;
+}
+mat-spinner {
+  margin: auto;
+}
+mat-paginator {
+  margin-top: 1rem;
+}

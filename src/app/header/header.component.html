@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row color="primary">
+    <a mat-button [routerLink]="['']"><mat-icon>drive_eta</mat-icon> VALPROM d.o.o</a>
+    <a *ngIf="isAuthenticated && authUserEmail == 'admin@carparts.com'" mat-button [routerLink]="['create']" routerLinkActive="mat-accent"><mat-icon>add_box</mat-icon>DODAJ PROIZVOD</a>
+
+    <span class="spacer"></span>
+    <ul>
+      <li><a *ngIf="isAuthenticated" mat-button [routerLink]="['product-list']" routerLinkActive="mat-accent" ><mat-icon>view_list</mat-icon> PROIZVODI</a></li>
+      <li><a *ngIf="isAuthenticated && authUserEmail == 'admin@carparts.com'" mat-button [routerLink]="['order-list']" routerLinkActive="mat-accent" ><mat-icon>shopping_cart</mat-icon> PORUDZBINE</a></li>
+      <li *ngIf="isAuthenticated && authUserEmail == 'admin@carparts.com'"><a mat-button [routerLink]="['user-list']" routerLinkActive="mat-accent" ><mat-icon>person</mat-icon>  KUPCI</a></li>
+        <li *ngIf="!isAuthenticated"><a mat-button [routerLink]="['login']" routerLinkActive="mat-accent" >LOGIN</a></li>
+        <li *ngIf="!isAuthenticated"><a mat-button  [routerLink]="['signup']" routerLinkActive="mat-accent" >SIGNUP</a></li>
+        <li *ngIf="isAuthenticated"><button mat-button  (click)="onLogout()" ><mat-icon>exit_to_app</mat-icon>LOGOUT</button></li>
+    </ul>
+  </mat-toolbar-row>
+</mat-toolbar>
